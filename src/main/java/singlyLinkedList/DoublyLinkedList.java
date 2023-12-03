@@ -117,6 +117,34 @@ public class DoublyLinkedList<T> implements CustomList<T> {
 
     }
 
+    // всё содержимое списка от последнего элемента к первому
+    public void forEachReverse(Consumer<? super T> action) {
+        Node tempTail = tail;
+        while (tempTail != null) {
+            action.accept(tempTail.data);
+            tempTail = tempTail.previous;
+        }
+    }
+
+    // всё содержимое списка от головного узла до заданного значения
+    public void forEachTo(Consumer<? super T> action, T toValue) {
+        if (action != null) {
+            for (T t : this) {
+                action.accept(t);
+                if (t.equals(toValue)) {
+                    break;
+                }
+            }
+        }
+    }
+
+    // всё содержимое от хвостового узла до заданного значения
+    public void forEachReverseTo(Consumer<? super T> action, T toValue) {
+        if (action != null) {
+            this.forEachReverse(action);
+        }
+    }
+
     // добавление всех значений заданного массива в начало списка
     public void insertArray(DoublyLinkedList list, T[] data) {
         if (data != null) {
@@ -178,6 +206,7 @@ public class DoublyLinkedList<T> implements CustomList<T> {
             data.clear();
         }
     }
+
     // печать всех значений списка в прямом/обратном порядке
     public static void printInDirectOrder(DoublyLinkedList list) { list.print(); }
 
@@ -192,32 +221,6 @@ public class DoublyLinkedList<T> implements CustomList<T> {
             copyList.print();
         }
     }
-
-    // выполнение действия заданного в параметре метода
-    // для каждого значения списка в прямом/обратном порядке
-//    public static void callCommand(Command command) {
-//        command.execute();
-//    }
-
-//    public void incrementDirectOrder(T value) {
-//        if (!listEmpty()) {
-//            Node tempHead = head;
-//            while (tempHead != null) {
-//                tempHead.data += value;
-//                tempHead = tempHead.next;
-//            }
-//        }
-//    }
-
-//    public void incrementReverseOrder(T value) {
-//        if (!listEmpty()) {
-//            Node tempTail = tail;
-//            while (tempTail != null) {
-//                tempTail.data += value;
-//                tempTail = tempTail.previous;
-//            }
-//        }
-//    }
 
     @Override
     public String toString() {

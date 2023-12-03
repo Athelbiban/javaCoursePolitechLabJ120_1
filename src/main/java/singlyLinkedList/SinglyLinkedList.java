@@ -167,7 +167,6 @@ public class SinglyLinkedList<T> implements CustomList<T> {
         return new MyIterator(head);
     }
 
-    @Override
     public void forEach(Consumer<? super T> action, T toValue) {
         if (action != null) {
             for (T t : this) {
@@ -179,7 +178,6 @@ public class SinglyLinkedList<T> implements CustomList<T> {
         }
     }
 
-    @Override
     public void forEach(T fromValue, Consumer<? super T> action) {
         if (action != null) {
             boolean flag = false;

@@ -18,6 +18,4 @@ public interface CustomList<T> extends Iterable<T> {
 
     void forEach(T fromValue, Consumer<? super T> action);
 
-    // выполнение действия заданного в параметре метода
-    // для каждого значения списка в прямом/обратном порядке
 }

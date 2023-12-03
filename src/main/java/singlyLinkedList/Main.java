@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.function.Consumer;
 
 public class Main {
     public static void main(String[] args) {
@@ -48,5 +49,15 @@ public class Main {
         while (iter.hasNext()) {
             System.out.println(iter.next());
         }
+        System.out.println("++++++++++цикл forEach (всё содержимое)+++++++++++");
+        for (Integer t : doublyList1) {
+            System.out.println(t);
+        }
+        System.out.println("++++++++++цикл forEach (всё содержимое от последнего элемента к первому)+++++++++++");
+        ((DoublyLinkedList) doublyList1).forEachReverse(System.out::println);
+        System.out.println("++++++++++цикл forEach (всё содержимое от головного до заданного)+++++++++++");
+        ((DoublyLinkedList<Integer>) doublyList1).forEachTo(System.out::println, 5);
+        System.out.println("++++++++++цикл forEach (всё содержимое от хвостового до заданного)+++++++++++");
+        ((DoublyLinkedList<Integer>) doublyList1).forEachReverseTo(System.out::println, 3);
     }
 }

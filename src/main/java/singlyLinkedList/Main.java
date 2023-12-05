@@ -58,6 +58,6 @@ public class Main {
         System.out.println("++++++++++цикл forEach (всё содержимое от головного до заданного)+++++++++++");
         ((DoublyLinkedList<Integer>) doublyList1).forEachTo(System.out::println, 5);
         System.out.println("++++++++++цикл forEach (всё содержимое от хвостового до заданного)+++++++++++");
-        ((DoublyLinkedList<Integer>) doublyList1).forEachReverseTo(System.out::println, 3);
+        ((DoublyLinkedList<Integer>) doublyList1).forEachReverseTo(System.out::println, 5);
     }
 }

@@ -107,22 +107,24 @@ public class DoublyLinkedList<T> implements CustomList<T> {
     @Override
     public void print() { System.out.println(this); }
 
-    @Override
+//    @Override
     public void forEach(Consumer<? super T> action, T data) {
 
     }
 
-    @Override
+//    @Override
     public void forEach(T fromValue, Consumer<? super T> action) {
 
     }
 
     // всё содержимое списка от последнего элемента к первому
     public void forEachReverse(Consumer<? super T> action) {
-        Node tempTail = tail;
-        while (tempTail != null) {
-            action.accept(tempTail.data);
-            tempTail = tempTail.previous;
+        if (action != null) {
+            Node tempTail = tail;
+            while (tempTail != null) {
+                action.accept(tempTail.data);
+                tempTail = tempTail.previous;
+            }
         }
     }
 
@@ -141,7 +143,25 @@ public class DoublyLinkedList<T> implements CustomList<T> {
     // всё содержимое от хвостового узла до заданного значения
     public void forEachReverseTo(Consumer<? super T> action, T toValue) {
         if (action != null) {
-            this.forEachReverse(action);
+            Node tempTail = tail;
+            while (tempTail != null) {
+                action.accept(tempTail.data);
+                if (tempTail.data == toValue) {
+                    break;
+                }
+                tempTail = tempTail.previous;
+            }
+        }
+    }
+
+    // всё от узла с заданным значением до хвоста
+    public void forEachFrom(T fromValue, Consumer<? super T> action) {
+        if (action != null) {
+            for (T t : this) {
+                if (t == fromValue) {
+                    action.accept(t);
+                }
+            }
         }
     }
 

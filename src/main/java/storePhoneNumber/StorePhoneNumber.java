@@ -38,9 +38,7 @@ public class StorePhoneNumber {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(regionCode, phoneNumber);
-    }
+    public int hashCode() { return Objects.hash(regionCode, phoneNumber); }
 
     // реализовать особый toString()
     @Override
@@ -65,7 +63,7 @@ public class StorePhoneNumber {
 
     private abstract static class Verification {
         private static void dataVerification(Integer data) {
-            if (data == null) {
+            if (data == null || data >= 0) {
                 throw new IllegalArgumentException ("IllegalArgumentException: number not be null");
             }
         }

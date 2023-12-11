@@ -1,4 +1,4 @@
-package singlyLinkedList;
+package linkedList;
 
 public enum ForEachMode {
         HEAD_TAIL,

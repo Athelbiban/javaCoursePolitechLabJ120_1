@@ -1,12 +1,12 @@
-package storePhoneNumber;
+package phoneNumber;
 
 import java.util.Objects;
 
-public class StorePhoneNumber {
+public class PhoneNumber {
     private Integer regionCode;
     private Integer phoneNumber;
 
-    public StorePhoneNumber(Integer regionCode, Integer phoneNumber) {
+    public PhoneNumber(Integer regionCode, Integer phoneNumber) {
         setRegionCode(regionCode);
         setPhoneNumber(phoneNumber);
     }
@@ -33,7 +33,7 @@ public class StorePhoneNumber {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof StorePhoneNumber that)) return false;
+        if (!(o instanceof PhoneNumber that)) return false;
         return Objects.equals(regionCode, that.regionCode) && Objects.equals(phoneNumber, that.phoneNumber);
     }
 
@@ -63,7 +63,7 @@ public class StorePhoneNumber {
 
     private abstract static class Verification {
         private static void dataVerification(Integer data) {
-            if (data == null || data >= 0) {
+            if (data == null || data <= 0) {
                 throw new IllegalArgumentException ("IllegalArgumentException: number not be null");
             }
         }

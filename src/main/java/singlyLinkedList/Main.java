@@ -1,10 +1,6 @@
 package singlyLinkedList;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.function.Consumer;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,11 +12,10 @@ public class Main {
         list.add(6);
         list.add(8);
 
-        list.print(); // вывод на печать заполненной коллекции
-        list1.print(); // вывод на печать пустой коллекции
-        System.out.println();
+//        list.print(); // вывод на печать заполненной коллекции
+//        list1.print(); // вывод на печать пустой коллекции
+//        System.out.println();
 
-//        list.print();
 //        Iterator<Integer> iterator = list.iterator();
 //        System.out.println("===============цикл while==============");
 //        while (iterator.hasNext()) {
@@ -32,17 +27,16 @@ public class Main {
 //        }
 //        System.out.println("===============метод forEach==============");
 //        list.forEach(System.out::println);
-//        System.out.println("===============метод forEach2=============");
-//        list.forEach(System.out::println, 4);
-//        System.out.println("===============метод forEach3=============");
-//        list.forEach(4, System.out::println);
+//        System.out.println("===============метод forEach с головы до значения=============");
+//        list.forEach(System.out::println, ForEachMode.HEAD_TARGET, 4);
+//        System.out.println("===============метод forEach3 от значения до хвоста=============");
+//        list.forEach(System.out::println, ForEachMode.TARGET_TAIL, 4);
 
         CustomList<Integer> doublyList1 = new DoublyLinkedList<>();
         doublyList1.add(1);
         doublyList1.add(3);
         doublyList1.add(5);
         doublyList1.add(7);
-        doublyList1.print();
 
         Iterator<Integer> iter = doublyList1.iterator();
         System.out.println("++++++++++цикл while+++++++++++");
@@ -54,10 +48,10 @@ public class Main {
             System.out.println(t);
         }
         System.out.println("++++++++++цикл forEach (всё содержимое от последнего элемента к первому)+++++++++++");
-        ((DoublyLinkedList) doublyList1).forEachReverse(System.out::println);
+        doublyList1.forEach(System.out::println, ForEachMode.TAIL_HEAD, null);
         System.out.println("++++++++++цикл forEach (всё содержимое от головного до заданного)+++++++++++");
-        ((DoublyLinkedList<Integer>) doublyList1).forEachTo(System.out::println, 5);
+        doublyList1.forEach(System.out::println, ForEachMode.HEAD_TARGET, 5);
         System.out.println("++++++++++цикл forEach (всё содержимое от хвостового до заданного)+++++++++++");
-        ((DoublyLinkedList<Integer>) doublyList1).forEachReverseTo(System.out::println, 5);
+        doublyList1.forEach(System.out::println, ForEachMode.TAIL_TARGET, 5);
     }
 }

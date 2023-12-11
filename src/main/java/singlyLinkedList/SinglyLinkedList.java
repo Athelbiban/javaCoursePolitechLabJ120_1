@@ -132,23 +132,16 @@ public class SinglyLinkedList<T> implements CustomList<T> {
         }
     }
 
-    // *выполнение действия, заданного в параметре метода
-//    public static void callCommand(Command command) {
-//        command.execute();
-//    }
+    @Override
+    public void forEach(Consumer<? super T> action, ForEachMode mode, T value) {
+        switch (mode) {
+            case HEAD_TAIL: for (T t: this) action.accept(head.data);break;
+            case HEAD_TARGET: forEach(action, value); break;
+            case TARGET_TAIL: forEach(value, action); break;
+        }
+    }
 
-//    public void incrementAll(T value) {
-//        if (!listEmpty()) {
-//            Node tempHead = head;
-//            while (head != null) {
-//                head.data += value;
-//                head = head.next;
-//            }
-//            head = tempHead;
-//        }
-//    }
-
-     // переопределенный toString()
+    // переопределенный toString()
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("[");
@@ -167,7 +160,7 @@ public class SinglyLinkedList<T> implements CustomList<T> {
         return new MyIterator(head);
     }
 
-    public void forEach(Consumer<? super T> action, T toValue) {
+    private void forEach(Consumer<? super T> action, T toValue) {
         if (action != null) {
             for (T t : this) {
                 action.accept(t);
@@ -178,7 +171,7 @@ public class SinglyLinkedList<T> implements CustomList<T> {
         }
     }
 
-    public void forEach(T fromValue, Consumer<? super T> action) {
+    private void forEach(T fromValue, Consumer<? super T> action) {
         if (action != null) {
             boolean flag = false;
             for (T t : this) {

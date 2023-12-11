@@ -14,8 +14,6 @@ public interface CustomList<T> extends Iterable<T> {
     Boolean isExist(T data);
     Boolean listEmpty();
     void print();
-//    void forEach(Consumer<? super T> action, T data);
-
-//    void forEach(T fromValue, Consumer<? super T> action);
+    void forEach(Consumer<? super T> action, ForEachMode mode, T targetValue);
 
 }
